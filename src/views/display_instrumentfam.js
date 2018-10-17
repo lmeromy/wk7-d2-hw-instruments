@@ -11,10 +11,11 @@ DisplayInstrFam.prototype.bindEvents = function(){
   });
 };
 
+// refactor this into 2 smaller fns!
 DisplayInstrFam.prototype.render = function(instrumentFam){
+  this.container.innerHTML = '';
   const instrFamName = document.createElement('h2');
   instrFamName.textContent = instrumentFam.name;
-  this.container.innerHTML = '';
   this.container.appendChild(instrFamName);
 
   const instrFamDescription = document.createElement('p');
@@ -24,16 +25,13 @@ DisplayInstrFam.prototype.render = function(instrumentFam){
   const instrFamList = document.createElement('ul');
   this.container.appendChild(instrFamList);
 
-
-// not working yet
   const instruments = instrumentFam.instruments;
-  for(let instrument in instruments){
-    const instrument = document.createElement('li');
-    instrument.textContent = instrument;
-    // console.log(instrument);
-    instrFamList.appendChild(instrument);
-
+  for(let instrument of instruments){
+    const li = document.createElement('li');
+    li.textContent = instrument;
+    instrFamList.appendChild(li);
   }
+  return instrFamList;
 };
 
 module.exports = DisplayInstrFam;

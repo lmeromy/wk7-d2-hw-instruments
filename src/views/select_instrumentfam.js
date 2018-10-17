@@ -24,7 +24,7 @@ InstrFamInput.prototype.populate = function (instrumentFamData) {
     const option = document.createElement('option');
     option.textContent = family.name;
     option.value = index; // is this line necessary?
-    this.element.appendChild(option);
+    this.element.appendChild(option);  //this is the select element which was passed through from the app!
   })
 
 };
